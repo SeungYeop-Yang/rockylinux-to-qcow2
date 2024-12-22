@@ -20,8 +20,8 @@ $
 
 # how to run
 
-```
-$ docker compose pull
+TBD.
 
-$ docker compose run --rm dev-env
+```
+
 ```
