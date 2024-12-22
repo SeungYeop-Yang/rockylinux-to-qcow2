@@ -1,0 +1,66 @@
+{
+	"variables": {
+		"image_url_bionic": "https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img",
+		"image_checksum_url_bionic": "https://cloud-images.ubuntu.com/bionic/current/SHA256SUMS",
+		"image_name_bionic": "bionic",
+		"ssh_private_key_file_bionic": "~/.ssh/id_ed25519",
+		"image_url_focal": "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img",
+		"image_checksum_url_focal": "https://cloud-images.ubuntu.com/focal/current/SHA256SUMS",
+		"image_name_focal": "focal",
+		"ssh_private_key_file_focal": "~/.ssh/id_ed25519"
+	},
+	"builders": [
+		{
+			"type": "qemu",
+			"iso_url": "{{user `image_url_bionic`}}",
+			"iso_checksum": "file:{{user `image_checksum_url_bionic`}}",
+			"shutdown_command": "rm -f /home/ubuntu/.ssh/authorized_keys && sudo rm -f /root/.ssh/authorized_keys && echo 'packer' | sudo -S shutdown -P now",
+			"output_directory": "output",
+			"disk_size": "10G",
+			"format": "qcow2",
+			"http_directory": "http",
+			"communicator": "ssh",
+			"ssh_username": "ubuntu",
+			"ssh_private_key_file": "{{user `ssh_private_key_file_bionic`}}",
+			"ssh_timeout": "20m",
+			"ssh_port": 22,
+			"ssh_clear_authorized_keys": true,
+			"disk_image": true,
+			"disk_interface": "virtio",
+			"use_default_display": true,
+			"vm_name": "{{user `image_name`}}.qcow2",
+			"qemuargs": [
+				[
+					"-cdrom",
+					"disk-ssh-pub-bionic.img"
+				]
+			]
+		},
+		{
+			"type": "qemu",
+			"iso_url": "{{user `image_url_focal`}}",
+			"iso_checksum": "file:{{user `image_checksum_url_focal`}}",
+			"shutdown_command": "rm -f /home/ubuntu/.ssh/authorized_keys && sudo rm -f /root/.ssh/authorized_keys && echo 'packer' | sudo -S shutdown -P now",
+			"output_directory": "output",
+			"disk_size": "10G",
+			"format": "qcow2",
+			"http_directory": "http",
+			"communicator": "ssh",
+			"ssh_username": "ubuntu",
+			"ssh_private_key_file": "{{user `ssh_private_key_file_focal`}}",
+			"ssh_timeout": "20m",
+			"ssh_port": 22,
+			"ssh_clear_authorized_keys": true,
+			"disk_image": true,
+			"disk_interface": "virtio",
+			"use_default_display": true,
+			"vm_name": "{{user `image_name_focal`}}.qcow2",
+			"qemuargs": [
+				[
+					"-cdrom",
+					"disk-ssh-pub-focal.img"
+				]
+			]
+		}
+	]
+}

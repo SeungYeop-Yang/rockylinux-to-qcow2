@@ -1,0 +1,20 @@
+#
+# Run:
+#   docker compose run --rm dev-env
+
+services:
+  dev-env:
+    platform: linux/amd64
+    privileged: true
+    build:
+      context: .
+    image: ghcr.io/daddy-knows-best/hash-env:main
+    volumes:
+      # For future ssh use in development
+      - ~/.ssh:/home/ubuntu/.ssh:ro
+      - .:/dev-env
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.gitconfig:/home/ubuntu/.gitconfig:ro
+      #- ~/.kube:/home/ubuntu/.kube_host:ro
+    #environment:
+    working_dir: /dev-env
