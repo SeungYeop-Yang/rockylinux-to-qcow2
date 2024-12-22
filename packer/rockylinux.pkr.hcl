@@ -10,7 +10,7 @@ packer {
 
 source "qemu" "rocky95" {
   headless                  = true
-  accelerator               = "none" #"hvm"
+  accelerator               = "none" #"hvf"
   iso_url                   = "https://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2"
   iso_checksum              = "file:./ROCKYSHA256SUMS"
   output_directory          = "output/rocky95"
