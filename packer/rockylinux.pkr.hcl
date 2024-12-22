@@ -17,7 +17,7 @@ packer {
 source "qemu" "rocky95" {
   headless                  = true
   accelerator               = "kvm" #"hvf" to run this packer template on MacOS, "kvm" if not
-  iso_url                   = "https://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2"
+  iso_url                   = "https://dl.rockylinux.org/pub/rocky/9.5/images/x86_64/Rocky-9-GenericCloud-Base-9.5-20241118.0.x86_64.qcow2"
   iso_checksum              = "file:./ROCKYSHA256SUMS"
   output_directory          = "output/rocky95"
   shutdown_command          = "rm -f /home/packer/.ssh/authorized_keys && sudo rm -f /root/.ssh/authorized_keys && echo 'packer' | sudo -S shutdown -P now"
