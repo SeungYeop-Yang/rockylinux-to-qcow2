@@ -10,6 +10,7 @@ RockyLinux Cloud image to qcow2 format
 # Debugging Status
 
 - 12/22/24 **Done**
+
 I used my baremetal 2013 MacPro Ubuntu 24.04.1 with the latest QEMU/KVM to run Packer template
 
 - 12/21/24 **Blocked**
