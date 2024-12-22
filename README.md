@@ -46,5 +46,13 @@ TBD.
 2024/12/22 11:21:54 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:54 [DEBUG] handshaking with SSH
 2024/12/22 11:21:54 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:54 [DEBUG] SSH handshake err: ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain
 2024/12/22 11:21:54 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:54 [DEBUG] Detected authentication error. Increasing handshake attempts.
+.
+.
+.
+==> qemu.rocky95: Timeout waiting for SSH.
+2024/12/22 12:20:32 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 12:20:32 failed to unlock port lockfile: close tcp 127.0.0.1:5956: use of closed network connection
+2024/12/22 12:20:32 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 12:20:32 failed to unlock port lockfile: close tcp 127.0.0.1:3911: use of closed network connection
+==> qemu.rocky95: Deleting output directory...
+Build 'qemu.rocky95' errored after 1 hour 1 minute: Timeout waiting for SSH.
 
 ```
