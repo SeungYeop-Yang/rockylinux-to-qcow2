@@ -6,9 +6,6 @@ users:
   - name: packer
     shell: /bin/bash
     sudo: ALL=(ALL) NOPASSWD:ALL
-    password: packer
-    chpasswd: { expire: False }
-    ssh_pwauth: True
     ssh_authorized_keys:
       - "${public_key}"
 EOF
