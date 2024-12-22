@@ -4,7 +4,7 @@ RockyLinux Cloud image to qcow2 format
 
 # history
 
-- 12/22/24 Realease v0.1.0
+- 12/22/24 Release v0.1.0
 - 12/21/24 Repo was creted
 
 # Debugging Status
