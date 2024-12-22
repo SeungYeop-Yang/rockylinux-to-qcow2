@@ -14,12 +14,6 @@ RockyLinux Cloud image to qcow2 format
 I used my baremetal 2013 MacPro Ubuntu 24.04.1 with the latest QEMU/KVM to run Packer template
 
 
-
-```
-$ cat /proc/cpuinfo | grep svm
-$
-```
-
 # how to run
 
 I ran on my baremetal 2013 MacPro Ubuntu 24.04.1 with the latest QEMU/KVM
