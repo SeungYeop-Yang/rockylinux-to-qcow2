@@ -8,10 +8,15 @@ RockyLinux Cloud image to qcow2 format
 
 # Debugging Status
 
+- 12/22/24 **Done**
+I used my baremetal 2013 MacPro Ubuntu 24.04.1 with the latest QEMU/KVM to run Packer template
+
 - 12/21/24 **Blocked**
 
 I don't have a machine that supports "Secure Virtual Machine (SVM)" feature, which is required for running RockyLinux 9.5.
 My daughter took my 2019 MacBook Pro, I can't test this repo until I get a decent machine that supports SVM.
+
+
 
 ```
 $ cat /proc/cpuinfo | grep svm
@@ -20,39 +25,47 @@ $
 
 # how to run
 
-TBD.
+I ran on my baremetal 2013 MacPro Ubuntu 24.04.1 with the latest QEMU/KVM
 
 ```
-==> qemu.rocky95: Using SSH communicator to connect: 127.0.0.1
-2024/12/22 11:20:32 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:20:32 Connected to VNC desktop: QEMU (rocky95)
-2024/12/22 11:20:32 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:20:32 [INFO] Waiting for SSH, up to timeout: 1h0m0s
-==> qemu.rocky95: Waiting for SSH to become available...
-2024/12/22 11:20:32 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:20:32 [INFO] Attempting SSH connection to 127.0.0.1:3911...
-2024/12/22 11:20:32 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:20:32 [DEBUG] reconnecting to TCP connection for SSH
-2024/12/22 11:20:32 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:20:32 [DEBUG] handshaking with SSH
-2024/12/22 11:21:32 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:32 [DEBUG] SSH handshake err: Timeout during SSH handshake
-2024/12/22 11:21:39 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:39 [INFO] Attempting SSH connection to 127.0.0.1:3911...
-2024/12/22 11:21:39 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:39 [DEBUG] reconnecting to TCP connection for SSH
-2024/12/22 11:21:39 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:39 [DEBUG] handshaking with SSH
-2024/12/22 11:21:39 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:39 [DEBUG] SSH handshake err: ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain
-2024/12/22 11:21:39 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:39 [DEBUG] Detected authentication error. Increasing handshake attempts.
-2024/12/22 11:21:46 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:46 [INFO] Attempting SSH connection to 127.0.0.1:3911...
-2024/12/22 11:21:46 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:46 [DEBUG] reconnecting to TCP connection for SSH
-2024/12/22 11:21:46 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:46 [DEBUG] handshaking with SSH
-2024/12/22 11:21:47 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:47 [DEBUG] SSH handshake err: ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain
-2024/12/22 11:21:47 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:47 [DEBUG] Detected authentication error. Increasing handshake attempts.
-2024/12/22 11:21:54 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:54 [INFO] Attempting SSH connection to 127.0.0.1:3911...
-2024/12/22 11:21:54 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:54 [DEBUG] reconnecting to TCP connection for SSH
-2024/12/22 11:21:54 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:54 [DEBUG] handshaking with SSH
-2024/12/22 11:21:54 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:54 [DEBUG] SSH handshake err: ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain
-2024/12/22 11:21:54 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 11:21:54 [DEBUG] Detected authentication error. Increasing handshake attempts.
-.
-.
-.
-==> qemu.rocky95: Timeout waiting for SSH.
-2024/12/22 12:20:32 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 12:20:32 failed to unlock port lockfile: close tcp 127.0.0.1:5956: use of closed network connection
-2024/12/22 12:20:32 packer-plugin-qemu_v1.1.0_x5.0_linux_amd64 plugin: 2024/12/22 12:20:32 failed to unlock port lockfile: close tcp 127.0.0.1:3911: use of closed network connection
-==> qemu.rocky95: Deleting output directory...
-Build 'qemu.rocky95' errored after 1 hour 1 minute: Timeout waiting for SSH.
+$ time ./build.sh
+qemu.rocky95: output will be in this color.
 
+==> qemu.rocky95: Retrieving ISO
+==> qemu.rocky95: Trying https://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2
+==> qemu.rocky95: Trying https://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2?checksum=sha256%3A069493fdc807300a22176540e9171fcff2227a92b40a7985a0c1c9e21aeebf57
+==> qemu.rocky95: https://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2?checksum=sha256%3A069493fdc807300a22176540e9171fcff2227a92b40a7985a0c1c9e21aeebf57 => /home/sajang/.cache/packer/608da2ea973d87e03bb2a3ea3b08113112f63052.iso
+==> qemu.rocky95: Copying hard drive...
+==> qemu.rocky95: Resizing hard drive...
+==> qemu.rocky95: Starting HTTP server on port 8060
+==> qemu.rocky95: Found port for communicator (SSH, WinRM, etc): 2936.
+==> qemu.rocky95: Using existing SSH private key
+==> qemu.rocky95: Looking for available port between 5900 and 6000 on 127.0.0.1
+==> qemu.rocky95: Starting VM, booting disk image
+    qemu.rocky95: The VM will be run headless, without a GUI. If you want to
+    qemu.rocky95: view the screen of the VM, connect via VNC without a password to
+    qemu.rocky95: vnc://127.0.0.1:5959
+==> qemu.rocky95: Overriding default Qemu arguments with qemuargs template option...
+==> qemu.rocky95: Waiting 1m0s for boot...
+==> qemu.rocky95: Connecting to VM via VNC (127.0.0.1:5959)
+==> qemu.rocky95: Typing the boot commands over VNC...
+    qemu.rocky95: Not using a NetBridge -- skipping StepWaitGuestAddress
+==> qemu.rocky95: Using SSH communicator to connect: 127.0.0.1
+==> qemu.rocky95: Waiting for SSH to become available...
+==> qemu.rocky95: Connected to SSH!
+==> qemu.rocky95: Provisioning with shell script: /tmp/packer-shell1908714819
+    qemu.rocky95: Hello World!
+==> qemu.rocky95: Gracefully halting virtual machine...
+==> qemu.rocky95: Converting hard drive...
+Build 'qemu.rocky95' finished after 1 minute 20 seconds.
+
+==> Wait completed after 1 minute 20 seconds
+
+==> Builds finished. The artifacts of successful builds are:
+--> qemu.rocky95: VM files in directory: output/rocky95
+
+real	1m23.694s
+user	1m24.541s
+sys	0m13.060s
+$
 ```

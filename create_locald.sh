@@ -2,8 +2,15 @@
 public_key=$(cat ~/.ssh/id_ed25519.pub)
 cat <<EOF > user-data
 #cloud-config
-ssh_authorized_keys:
-  - "${public_key}"
+users:
+  - name: packer
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    password: packer
+    chpasswd: { expire: False }
+    ssh_pwauth: True
+    ssh_authorized_keys:
+      - "${public_key}"
 EOF
 
 cloud-localds packer/disk-ssh-pub.img user-data

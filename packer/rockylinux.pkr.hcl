@@ -6,11 +6,17 @@ packer {
       source  = "github.com/hashicorp/qemu"
     }
   }
+  required_plugins {
+    ansible = {
+      version = "~> 1"
+      source = "github.com/hashicorp/ansible"
+    }
+  }
 }
 
 source "qemu" "rocky95" {
   headless                  = true
-  accelerator               = "none" #"hvf" to run this packer template on MacOS, "kvm" if not
+  accelerator               = "kvm" #"hvf" to run this packer template on MacOS, "kvm" if not
   iso_url                   = "https://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2"
   iso_checksum              = "file:./ROCKYSHA256SUMS"
   output_directory          = "output/rocky95"
@@ -40,4 +46,10 @@ source "qemu" "rocky95" {
 
 build {
   sources = ["source.qemu.rocky95"]
+
+  provisioner "shell" {
+    inline = [
+      "echo 'Hello World!'"
+    ]
+  }
 }
