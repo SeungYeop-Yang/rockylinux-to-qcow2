@@ -10,7 +10,7 @@ packer {
 
 source "qemu" "rocky95" {
   headless                  = true
-  accelerator               = "none" #"hvf"
+  accelerator               = "none" #"hvf" to run this packer template on MacOS, "kvm" if not
   iso_url                   = "https://dl.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2"
   iso_checksum              = "file:./ROCKYSHA256SUMS"
   output_directory          = "output/rocky95"
@@ -31,6 +31,7 @@ source "qemu" "rocky95" {
   use_default_display       = true
   vm_name                   = "rocky95"
   qemuargs = [
+    ["-cpu", "host"],
     ["-display", "none"],
     ["-cdrom", "disk-ssh-pub.img"]
   ]
