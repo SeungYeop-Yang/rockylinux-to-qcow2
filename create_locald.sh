@@ -6,4 +6,4 @@ ssh_authorized_keys:
   - "${public_key}"
 EOF
 
-cloud-localds packer/disk-ssh-pub-ubuntu.img user-data
+cloud-localds packer/disk-ssh-pub.img user-data
