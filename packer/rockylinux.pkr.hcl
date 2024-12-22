@@ -33,7 +33,7 @@ source "qemu" "rocky95" {
   disk_image                = true
   disk_interface            = "virtio"
   net_device                = "virtio-net"
-  boot_wait                 = "1m"
+  boot_wait                 = "15s"
   use_default_display       = true
   vm_name                   = "rocky95"
   qemuargs = [
@@ -49,7 +49,8 @@ build {
 
   provisioner "shell" {
     inline = [
-      "echo 'Hello World!'"
+      "echo 'Hello World!'",
+      "cat /etc/*-release"
     ]
   }
 }
