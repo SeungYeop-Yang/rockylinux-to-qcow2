@@ -8,7 +8,7 @@ packer {
   }
   required_plugins {
     ansible = {
-      version = "~> 1"
+      version = ">= 1.1.2"
       source = "github.com/hashicorp/ansible"
     }
   }
@@ -48,9 +48,11 @@ build {
   sources = ["source.qemu.rocky95"]
 
   provisioner "shell" {
-    inline = [
-      "echo 'Hello World!'",
-      "cat /etc/*-release"
-    ]
+    script = "shell/shell-provisioner.sh"
+  }
+
+  provisioner "ansible" {
+    playbook_file = "ansible/playbook.yaml"
+    extra_arguments = [ "--scp-extra-args", "'-O'" ]
   }
 }
